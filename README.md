@@ -13,6 +13,7 @@ This project is intended to process MoMo SMS records from XML, clean and categor
 - James Dovee Kanneh II
 - Gavin GANZA
 - Herve IMENA Rwigema
+- Yai Majak D'Agoot
 
 ## Database Design
 
