@@ -8,19 +8,6 @@ Parsers
 
 This project is intended to process MoMo SMS records from XML, clean and categorize them, store them in a relational database, and build a frontend to analyze and visualize the data.
 
-## JSON Data Modeling & Serialization.
-### SQL to JSON Serialization Mapping Strategy
-
-To expose our MoMo SQL relational data for external use, we created a structured serialization mapping. The relational database handles complex logic using normalized tables and a junction table (transaction_participants), while the JSON schema utilizes nested structures to reduce API calls and provide full context.
-
-| SQL Database implementation | JSON Serialization Equivalent | Data Type Mapping |
-| :--- | :--- | :--- |
-| `transactions` Table (Base) | Root `"transaction"` object | `DECIMAL` → `Number (Float)` |
-| `transaction_categories` (1:M) | Nested `"category"` object | `INT` FK expands to JSON Object |
-| `transaction_participants` (M:N) | `"participants"` JSON Array | Junction table loops into an array of objects containing the specific `role` ENUM |
-| `users` (joined via M:N) | Nested `"user"` object within participants | `VARCHAR` → `String`, `ENUM` → `String` |
-| `system_logs` (1:M) | `"system_logs"` JSON Array | `DATETIME` → ISO-8601 String (`"YYYY-MM-DDThh:mm:ssZ"`) |
-
 ## Members
 
 - James Dovee Kanneh II
@@ -43,6 +30,19 @@ The database is setup to hold information from the provided Momo transactions da
 The relationship between `users` and `transactions` is many-to-many, which we resolved through `transaction_participants`.
 
 Each transaction belongs to one transaction category, while one category can contain many transactions.
+
+## JSON Data Modeling & Serialization.
+### SQL to JSON Serialization Mapping Strategy
+
+To expose our MoMo SQL relational data for external use, we created a structured serialization mapping. The relational database handles complex logic using normalized tables and a junction table (transaction_participants), while the JSON schema utilizes nested structures to reduce API calls and provide full context.
+
+| SQL Database implementation | JSON Serialization Equivalent | Data Type Mapping |
+| :--- | :--- | :--- |
+| `transactions` Table (Base) | Root `"transaction"` object | `DECIMAL` → `Number (Float)` |
+| `transaction_categories` (1:M) | Nested `"category"` object | `INT` FK expands to JSON Object |
+| `transaction_participants` (M:N) | `"participants"` JSON Array | Junction table loops into an array of objects containing the specific `role` ENUM |
+| `users` (joined via M:N) | Nested `"user"` object within participants | `VARCHAR` → `String`, `ENUM` → `String` |
+| `system_logs` (1:M) | `"system_logs"` JSON Array | `DATETIME` → ISO-8601 String (`"YYYY-MM-DDThh:mm:ssZ"`) |
 
 ## Related Links
 
