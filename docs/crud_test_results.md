@@ -1,10 +1,9 @@
 # CRUD Testing — Member 3 Deliverable
 ## MoMo SMS Data (momo_sms) — Database: momo_sms_db
 
-Tested against MariaDB 10.11, schema loaded from database/schema_fixed_for_testing.sql
-(a locally patched copy of database_setup.sql — two bugs found and reported to Member 2:
-missing comma before the CHECK constraints in the transactions table, and category_id
-being NOT NULL while its FK said ON DELETE SET NULL).
+Tested against MariaDB 10.11, schema loaded from database/database_setup.sql. Two bugs
+were found during testing (missing comma before the CHECK constraints, and category_id
+being NOT NULL while its FK said ON DELETE SET NULL) and have since been fixed in the file.
 
 ## Test data
 6 users, 6 categories, 8 transactions (built from real SMS bodies in data/raw/momo.xml),
