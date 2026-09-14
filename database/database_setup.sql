@@ -30,7 +30,12 @@ CREATE TABLE transactions (
 
     FOREIGN KEY (category_id)
         REFERENCES transaction_categories(id)
+        ON DELETE SET NULL  
+
+        CONSTRAINT chk_transactions_amount CHECK (amount > 0),
+    CONSTRAINT chk_transactions_fee CHECK (fee >= 0) 
 );
+    CREATE INDEX idx_transactions_category ON transactions(category_id);
 
 CREATE TABLE transaction_participants (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,12 +44,19 @@ CREATE TABLE transaction_participants (
     role ENUM('SENDER', 'RECEIVER', 'ACCOUNT_OWNER', 'MERCHANT', 'AGENT', 'OTHER')
         NOT NULL,
 
-    FOREIGN KEY (user_id)
-        REFERENCES users(id),
+     CONSTRAINT fk_participants_user FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE,
 
-    FOREIGN KEY (transaction_id)
+    CONSTRAINT fk_participants_transaction FOREIGN KEY (transaction_id)
         REFERENCES transactions(id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT uq_participant UNIQUE (user_id, transaction_id, role)
 );
+
+CREATE INDEX idx_participants_user ON transaction_participants(user_id);
+CREATE INDEX idx_participants_transaction ON transaction_participants(transaction_id);
 
 CREATE TABLE system_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -53,6 +65,8 @@ CREATE TABLE system_logs (
     message VARCHAR(800) NOT NULL,
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (transaction_id)
+CONSTRAINT fk_logs_transaction FOREIGN KEY (transaction_id)
         REFERENCES transactions(id)
+        ON DELETE SET NULL
 );
+CREATE INDEX idx_logs_transaction ON system_logs(transaction_id);
