@@ -30,10 +30,10 @@ CREATE TABLE transactions (
 
     FOREIGN KEY (category_id)
         REFERENCES transaction_categories(id)
-        ON DELETE SET NULL  
+        ON DELETE RESTRICT,
 
-        CONSTRAINT chk_transactions_amount CHECK (amount > 0),
-    CONSTRAINT chk_transactions_fee CHECK (fee >= 0) 
+    CONSTRAINT chk_transactions_amount CHECK (amount > 0),
+    CONSTRAINT chk_transactions_fee CHECK (fee >= 0)
 );
     CREATE INDEX idx_transactions_category ON transactions(category_id);
 
