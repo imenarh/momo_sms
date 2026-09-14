@@ -8,6 +8,11 @@ Parsers
 
 This project is intended to process MoMo SMS records from XML, clean and categorize them, store them in a relational database, and build a frontend to analyze and visualize the data.
 
+## JSON Data Modeling & Serialization.
+# SQL to JSON Serialization Mapping Strategy
+
+To expose our MoMo SQL relational data for external use, we created a structured serialization mapping. The relational database handles complex logic using normalized tables and a junction table (transaction_participants), while the JSON schema utilizes nested structures to reduce API calls and provide full context.
+
 ## Members
 
 - James Dovee Kanneh II
