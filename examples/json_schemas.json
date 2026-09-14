@@ -1,0 +1,89 @@
+{
+  "entity_examples": {
+    "User": {
+      "id": 1,
+      "full_name": "Butera john",
+      "phone_number": "0788123456",
+      "user_type": "CUSTOMER",
+      "created_at": "2026-09-10T08:30:00Z"
+    },
+    "Transaction_Category": {
+      "id": 2,
+      "name": "MERCHANT_PAYMENT",
+      "description": "Payment made to a registered merchant using MoMoPay"
+    },
+    "System_Log": {
+      "id": 105,
+      "transaction_id": 10,
+      "level": "INFO",
+      "message": "Successfully parsed SMS text for reference ID TXN998822",
+      "timestamp": "2026-09-14T21:15:39Z"
+    },
+    "Transaction_Base": {
+      "id": 10,
+      "reference_id": "TXN998822",
+      "category_id": 2,
+      "amount": 15000.00,
+      "balance_after": 45000.50,
+      "fee": 150.00,
+      "status": "COMPLETED",
+      "transaction_date": "2026-09-14T21:15:38Z",
+      "raw_sms_text": "*165*Payment of 15000 to CHICKEN TONIGHT completed. Balance 45000.50*",
+      "created_at": "2026-09-14T21:16:00Z"
+    }
+  },
+
+  "complex_api_response": {
+    "_comment": "This represents a complete, nested transaction resolving the M:N participants relationship and joining Categories and Logs.",
+    "transaction": {
+      "id": 10,
+      "reference_id": "TXN998822",
+      "amount": 15000.00,
+      "balance_after": 45000.50,
+      "fee": 150.00,
+      "status": "COMPLETED",
+      "transaction_date": "2026-09-14T21:15:38Z",
+      "raw_sms_text": "*165*Payment of 15000 to CHICKEN TONIGHT completed. Balance 45000.50*",
+      "created_at": "2026-09-14T21:16:00Z",
+      "category": {
+        "id": 2,
+        "name": "MERCHANT_PAYMENT",
+        "description": "Payment made to a registered merchant using MoMoPay"
+      },
+      "participants": [
+        {
+          "role": "SENDER",
+          "user": {
+            "id": 1,
+            "full_name": "Butera john",
+            "phone_number": "0788123456",
+            "user_type": "CUSTOMER"
+          }
+        },
+        {
+          "role": "MERCHANT",
+          "user": {
+            "id": 8,
+            "full_name": "Chicken Tonight Kigali",
+            "phone_number": "0788654321",
+            "user_type": "MERCHANT"
+          }
+        }
+      ],
+      "system_logs": [
+        {
+          "id": 104,
+          "level": "INFO",
+          "message": "Incoming raw SMS string received",
+          "timestamp": "2026-09-14T21:15:37Z"
+        },
+        {
+          "id": 105,
+          "level": "INFO",
+          "message": "Successfully parsed SMS text for reference ID TXN998822",
+          "timestamp": "2026-09-14T21:15:39Z"
+        }
+      ]
+    }
+  }
+}
