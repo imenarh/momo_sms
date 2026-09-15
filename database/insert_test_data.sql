@@ -57,4 +57,7 @@ INSERT INTO system_logs (transaction_id, level, message) VALUES
 (1, 'INFO',  'Transaction 76662021700 parsed and categorized as DEPOSIT'),
 (4, 'INFO',  'Transaction parsed from bank deposit SMS pattern'),
 (NULL, 'WARNING', 'SMS at 2024-05-11 20:34:47 missing explicit TxId, matched by regex fallback'),
-(8, 'INFO',  'Transaction 13913173274 parsed and categorized as AIRTIME');
+(8, 'INFO',  'Transaction 13913173274 parsed and categorized as AIRTIME'),
+(NULL, 'WARNING', 'Duplicate SMS reference_id detected during load_db insert, record skipped'),
+(NULL, 'ERROR', 'Failed to categorize SMS body: no matching keyword pattern in categorize.py, defaulted to UNKNOWN'),
+(2, 'INFO', 'clean_normalize.py stripped currency formatting from raw amount string before insert');
