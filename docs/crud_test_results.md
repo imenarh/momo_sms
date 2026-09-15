@@ -10,7 +10,7 @@ being NOT NULL while its FK said ON DELETE SET NULL) and have since been fixed i
 16 participant rows, 4 system logs.
 
 ## SELECT / INSERT / UPDATE / DELETE results
-See attached screenshots for terminal output of:
+See docs/crud_results_part1.png, docs/crud_results_part2.png, and docs/crud_output.txt for terminal output of:
 - Q1: all transactions joined with category name
 - Q2: total amount moved per category (aggregate)
 - Q3: all parties in a transaction (junction table join)
