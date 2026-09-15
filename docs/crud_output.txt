@@ -1,5 +1,5 @@
 
---- Q1: All transactions with category name ---
+All transactions with category name
 id	reference_id	category	amount	status	transaction_date
 1	76662021700	DEPOSIT	2000.00	COMPLETED	2024-05-10 16:30:51
 2	73214484437	PAYMENT	1000.00	COMPLETED	2024-05-10 16:31:39
@@ -10,7 +10,7 @@ id	reference_id	category	amount	status	transaction_date
 7	NULL	TRANSFER	1000.00	COMPLETED	2024-05-12 03:47:33
 8	13913173274	AIRTIME	2000.00	COMPLETED	2024-05-12 11:41:28
 
---- Q2: Total amount moved per category ---
+Total amount moved per category
 category	txn_count	total_amount
 BANK_DEPOSIT	1	40000.00
 TRANSFER	2	11000.00
@@ -18,12 +18,12 @@ PAYMENT	3	3600.00
 AIRTIME	1	2000.00
 DEPOSIT	1	2000.00
 
---- Q3: All parties involved in transaction 6 (transfer) ---
+All parties involved in transaction 6 (transfer)
 full_name	user_type	role
-James Kanneh	CUSTOMER	SENDER
-Samuel Carter	CUSTOMER	RECEIVER
+Jean Pierre Uwimana	CUSTOMER	SENDER
+Eric Nkurunziza	CUSTOMER	RECEIVER
 
---- Q4: Every transaction James Kanneh sent ---
+Every transaction Jean Pierre Uwimana sent
 id	reference_id	amount	transaction_date
 2	73214484437	1000.00	2024-05-10 16:31:39
 3	51732411227	600.00	2024-05-10 21:32:32
@@ -32,19 +32,19 @@ id	reference_id	amount	transaction_date
 7	NULL	1000.00	2024-05-12 03:47:33
 8	13913173274	2000.00	2024-05-12 11:41:28
 
---- Q5: INSERT a new withdrawal transaction ---
+INSERT a new withdrawal transaction
 id	reference_id	category_id	amount	balance_after	fee	status	transaction_date	raw_sms_text	created_at
-10	99999999999	6	5000.00	20280.00	100.00	COMPLETED	2024-05-13 09:15:00	You have withdrawn 5000 RWF from agent 36521838. Fee was 100 RWF. New balance: 20280 RWF.	2026-09-15 15:39:42
+9	99999999999	6	5000.00	20280.00	100.00	COMPLETED	2024-05-13 09:15:00	You have withdrawn 5000 RWF from MoMo Agent Remera 36521838. Fee was 100 RWF. New balance: 20280 RWF.	2026-09-15 21:31:12
 
---- Q6: UPDATE a transaction status (e.g., flagged as REVERSED) ---
+UPDATE a transaction status (flagged as REVERSED)
 id	status
-10	REVERSED
+9	REVERSED
 
---- Q7: UPDATE a user phone number ---
+UPDATE a user phone number
 id	full_name	phone_number
-2	Jane Smith	250788110099
+2	Marie Claire Mukamana	250788999888
 
---- Q9: DELETE a transaction (should CASCADE into transaction_participants) ---
+DELETE a transaction (CASCADE into transaction_participants)
 participants_before
 2
 participants_after
