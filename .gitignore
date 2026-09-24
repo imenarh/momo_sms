@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment files
+.env
+
+# Generated API data
+data/processed/transactions.json
+
+# Local files
+.DS_Store
