@@ -5,7 +5,7 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(200) NOT NULL,
     phone_number VARCHAR(20) NULL,
-    user_type ENUM('CUSTOMER', 'MERCHANT', 'AGENT', 'UNKNOWN') DEFAULT 'UNKNOWN',
+    user_type VARCHAR(50) DEFAULT 'UNKNOWN',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE transactions (
         REFERENCES transaction_categories(id)
         ON DELETE RESTRICT,
 
-    CONSTRAINT chk_transactions_amount CHECK (amount > 0),
+    CONSTRAINT chk_transactions_amount CHECK (amount >= 0),
     CONSTRAINT chk_transactions_fee CHECK (fee >= 0)
 );
 
