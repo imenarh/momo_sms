@@ -1,10 +1,3 @@
-"""
-api/schemas.py
-Member 3 Deliverable — Data Validation
-
-Provides basic schema validation for incoming API requests to ensure 
-payloads match the required relational structure before hitting the DB.
-"""
 
 def validate_transaction_payload(payload):
     """Validates the incoming JSON against required fields."""

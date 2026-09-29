@@ -1,10 +1,4 @@
-"""
-etl/load_db.py
-Member 3 Deliverable — Database Loading
 
-Extracts parsed JSON transactions and loads them into the MySQL normalized schema:
-transaction_categories, users, transactions, transaction_participants, and system_logs.
-"""
 import json
 import os
 import mysql.connector

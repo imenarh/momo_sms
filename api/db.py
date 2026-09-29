@@ -1,10 +1,4 @@
-"""
-api/db.py
-Member 3 Deliverable — Database Access Layer
 
-Handles MySQL queries and formats the results into the nested JSON serialization 
-strategy defined in the project architecture.
-"""
 import mysql.connector
 
 DB_CONFIG = {
